@@ -1,0 +1,245 @@
+package stagesdatavalidation;
+
+/**
+ * Program that will validate data entered by the user. The user will enter data into the program at a number of stages. 
+ * Users will only be able to advance to the next stage if they provide valid data as input. 
+ * If invalid data is entered as input, then the stage will loop and the user will be prompted for the data again. 
+ * If the user manages to get through each stage, then a congratulatory message should be displayed.
+ */
+
+    /**
+     * Name: Harmandeep Arneja
+     * Date: 1/15/2021
+     * Program: Debugging and Validating Data: Data Validation and Testing Data
+     */
+
+// Imports Scanner class to initiate user input
+import java.util.Scanner;
+
+public class StagesDataValidation {
+    
+    public static void main(String[] args) {
+        
+        // Helps us store information inputted from the keyboard.
+        Scanner keyboard = new Scanner(System.in);
+        
+        // Variables needed in our program
+        String SixChar, LetterChar, LetterLengthChar, RangeInteger, NegInteger, PosInteger; // String variables needed for Stages 1-6
+        
+        // Boolean variables which will be used to create while loops. They will all be initialized to false.
+        boolean Valid1 = false;
+        boolean Valid2 = false;
+        boolean Valid3 = false;
+        boolean Valid4 = false;
+        boolean Valid5 = false;
+        boolean Valid6 = false;
+        
+        // Creating a while loop for the first stage
+        while (Valid1 == false) {
+            
+            // Outputting the heading
+            System.out.println("---Stage 1---");
+            System.out.print("Please enter a string that is greater than 6 characters: "); // Asking the user for a string
+            SixChar = keyboard.nextLine(); // Storing that value
+            int Length = SixChar.length(); // Declaring a variable which will hold the value for the length of the string.
+            
+            System.out.println(""); // Adds a space
+            
+            // Try catch statement 
+            try {
+            if (Length > 6) { // If statement
+                
+                System.out.println("Valid Input. You have advanced to Stage 2 of the program!"); // Congratulatory message
+                System.out.println(""); // Adds a space
+                Valid1 = true; // Setting the boolean variable value to true to end the loop
+                
+            } else {  // else statement for when the user enters something wrong
+                
+                System.out.println("Invalid Input"); // Tells the user that what he/she has entered is invalid
+                throw new Exception("'" + SixChar + "' is not greater than 6 characters"); // Creating an exception
+            }   
+            
+            } catch(Exception e){
+                
+                System.out.println(e.toString()); // Outputs the exception which is converted to string
+                System.out.println("Try Again"); // Telling the user to try again
+                System.out.println(""); // Adds a space
+            }   
+        }
+        
+        // Creating a while loop for the second stage
+        while (Valid2 == false) {
+            
+            // Outputting the heading
+            System.out.println("---Stage 2---");
+            System.out.print("Please enter a string that contains at least one lowercase “a”: "); // Asking for user input
+            LetterChar = keyboard.nextLine(); // Storing that value
+            boolean Letter = LetterChar.contains("a"); // Declaring a boolean variable which will be true or false depending on whether the string contains the letter a or not.
+            
+            System.out.println(""); // Adds a space
+            
+            // Try catch statement
+            try {
+            if (Letter == true) {  // If statement
+                
+                System.out.println("Valid Input. You have advanced to Stage 3 of the program!"); // Congratulatory message
+                System.out.println(""); // Adds a space
+                Valid2 = true; // Setting the value to true so the loops ends
+                
+            } else { // else statement for when the user enters something wrong
+                
+                System.out.println("Invalid Input"); // Tells the user that what he/she has entered is invalid
+                throw new Exception("'" + LetterChar + "' does not contain the the letter “a”"); // Creating an exception
+            }   
+            
+            } catch(Exception e){
+                
+                System.out.println(e.toString()); // Outputs the exception which is converted to string
+                System.out.println("Try Again"); // Telling the user to try again
+                System.out.println(""); // Adds a space
+            }   
+        }
+    
+        // Creating a while loop for the third stage
+        while (Valid3 == false) {
+            
+            // Outputting the heading
+            System.out.println("---Stage 3---");
+            System.out.print("Please enter a string that is between 5 and 15 characters long, and does not contain the letter “z”: "); // Asking the user for input
+            LetterLengthChar = keyboard.nextLine(); // Storing that value
+            int Length = LetterLengthChar.length(); // Creating a variable which will hold the length of the string
+            boolean Letterz = LetterLengthChar.contains("z"); // Creating a variable which will hold the true/false value of whether the string contains the letter z or not.
+            
+            System.out.println(""); // Adds a space
+            
+            // Try catch statement
+            try {
+            if ((Letterz == false) && (Length >= 5) && (Length <= 15)) {  // If statement
+                
+                System.out.println("Valid Input. You have advanced to Stage 4 of the program!"); // Congratulatory message
+                System.out.println(""); // Adds a space
+                Valid3 = true; // Sets the value to true to end the loop
+                
+            } else { // else statement for when the user enters something wrong
+                
+                System.out.println("Invalid Input"); // Tells the user that what he/she has entered is invalid
+                
+                // Creates new exception
+                throw new Exception("'" + LetterLengthChar + "' either contains the the letter “Z” or is not between 5 and 15 characters.");
+            }   
+            
+            } catch(Exception e){
+                
+                System.out.println(e.toString()); // Outputs the exception which is converted to string
+                System.out.println("Try Again"); // Tells the user to try again
+                System.out.println(""); // Adds a space
+            }   
+        }
+        
+        // Creating a while loop for the fourth stage
+        while (Valid4 == false) {
+            
+            // Outputting the heading
+            System.out.println("---Stage 4---");
+            System.out.print("Please enter an integer between 5 and 500: "); // Asking the user for input
+            RangeInteger = keyboard.next(); // Storing the value
+            
+            System.out.println(""); // Adds a space
+            
+            // Try catch statement
+            try {
+                
+                int RangeInteger1 = Integer.valueOf(RangeInteger); // Gets the integer value of the string
+                
+            if (RangeInteger1 >= 5 && RangeInteger1 <= 500) {  // If statement
+                
+                System.out.println("Valid Input. You have advanced to Stage 5 of the program!"); // Congraulatory message
+                System.out.println(""); // Adds a space
+                Valid4 = true; // Sets the value to true so the loop ends
+                
+            } else {  // else statement for when the user enters something wrong
+                
+                System.out.println("Invalid Input"); // Tells the user that what he/she has entered is invalid
+                throw new Exception("'" + RangeInteger + "' is not an integer between 5 and 500."); // Creates an exception
+            }   
+            
+            } catch(Exception e){
+                
+                System.out.println(e.toString()); // Outputs the exception which is converted to string
+                System.out.println("Try Again"); // Tells the user to try again
+                System.out.println(""); // Adds a space
+            }   
+        }
+        
+        // Creating a while loop for the fifth stage
+        while (Valid5 == false) {
+            
+            // Outputs the heading
+            System.out.println("---Stage 5---");
+            System.out.print("Please enter a negative integer: "); // Asking the user for input
+            NegInteger = keyboard.next(); // Storing that value
+            
+            System.out.println(""); // Adds a space
+            
+            // Try catch statement
+            try {
+                
+                int NegInteger1 = Integer.valueOf(NegInteger); // Gets the integer value of the string
+                
+            if (NegInteger1 < 0) {  // If statement
+                
+                System.out.println("Valid Input. You have advanced to Stage 6 of the program!"); // Congrulatory message
+                System.out.println(""); // Adds a space
+                Valid5 = true; // Sets the value to true to stop the loop
+                
+            } else {  // else statement for when the user enters something wrong
+                
+                System.out.println("Invalid Input"); // Tells the user that what he/she has entered is invalid
+                throw new Exception("'" + NegInteger + "' is not a negative integer."); // Creates a new exception
+            }   
+            
+            } catch(Exception e){
+                
+                System.out.println(e.toString()); // Outputs the exception which is converted to string
+                System.out.println("Try Again"); // Tells the user to try again
+                System.out.println(""); // Adds a space
+            }   
+        }
+        
+        // Creating a while loop for the sixth stage
+        while (Valid6 == false) {
+            
+            // Outputs the heading of the program
+            System.out.println("---Stage 6---");
+            System.out.print("Please enter a positive, odd integer: "); // Asking the user for input
+            PosInteger = keyboard.next(); // Storing that value
+            
+            System.out.println(""); // Adds a space
+            
+            // Try catch statement
+            try {
+                
+                int PosInteger1 = Integer.valueOf(PosInteger); // Gets the integer value of the string
+                
+            if (PosInteger1 > 0 && PosInteger1 % 2 != 0) {  // If statement
+                
+                System.out.println("Valid Input. You have completed all the stages of this program!"); // Congratulatory message
+                System.out.println(""); // Adds a space
+                Valid6 = true; // Sets the value to true to terminate the loop
+                
+            } else {  // else statement for when the user enters something wrong
+                
+                System.out.println("Invalid Input"); // Tells the user that what he/she has entered is invalid
+                throw new Exception("'" + PosInteger + "' is not a positive or odd integer."); // Creates a new exception
+            }   
+            
+            } catch(Exception e){
+                
+                System.out.println(e.toString()); // Outputs the exception which is converted to string
+                System.out.println("Try Again"); // Tells the user to try again
+                System.out.println(""); // Adds a space
+            }   
+        }
+    }
+    
+}
